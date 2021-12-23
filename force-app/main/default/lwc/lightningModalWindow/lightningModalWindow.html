@@ -1,0 +1,24 @@
+<template>
+    <template if:true={isModalOpen}>
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <lightning-card>
+                    <slot name="content">
+                        <!--
+                           Designed for use as an inner/child component.
+                           Here will be your content.
+                        -->   
+                    </slot>
+
+                    <slot name="footer" slot="footer">
+                        <!--
+                           Designed for use as an inner/child component.
+                           Here will be your footer.
+                        --> 
+                    </slot>
+                </lightning-card>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+ </template>
