@@ -1,7 +1,3 @@
-# Custom Lightning Web Components: Introduction
-
-Custom Lightning Web Components uses core Web Components standards and provides missing standard features and better performance.
-
 ## Custom Lightning Web Components: Components
 
 1. Lightning Modal Window | c-lightning-modal-window
