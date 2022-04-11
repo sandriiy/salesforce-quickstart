@@ -1,7 +1,7 @@
 ## Custom Lightning Web Components: Components
 
 1. Lightning Modal Window | c-lightning-modal-window
-   - Modal window with the ability to add your own content and footer.
+   - Modal window with the ability to add your own content.
 
 ## Custom Lightning Web Components: Configure
 
