@@ -4,7 +4,7 @@ import { LightningElement, track, api } from 'lwc';
     * Custom Lightning Web Components.
     * Custom component that represents the ability to display content in a modal window.
     * 
-    @markup
+    * @markup
     * <template>
     *   ...
     #   <c-lightning-modal-window> 
@@ -14,9 +14,11 @@ import { LightningElement, track, api } from 'lwc';
     *   ...
     * </template>
     *
-    @javascript
-    #   this.template.querySelector('c-lightning-modal-window').openWindow(); // Call from the parent component to open the modal window
-    #   this.template.querySelector('c-lightning-modal-window').closeWindow(); // Call from the parent component to close the modal window
+    * @javascript
+    # this.template.querySelector('c-lightning-modal-window').openWindow(); // Call from the parent component to open the modal window
+    # this.template.querySelector('c-lightning-modal-window').closeWindow(); // Call from the parent component to close the modal window
+    * 
+    * @author https://github.com/sandriiy/Deserves-Acceptance
 */
 export default class LightningModalWindow extends LightningElement {
     /** 
