@@ -1,8 +1,10 @@
 import { LightningElement, api, wire, track } from 'lwc';
 
+// This controller contains layout and fieldset handling
 import getLayoutFields from '@salesforce/apex/LightningRecordLayoutController.getPageLayoutDetails';
 import getHeaderFields from '@salesforce/apex/LightningRecordLayoutController.getFieldSetByApiName';
 
+// This module includes wire adapters to record data and get values
 import { getRecord } from 'lightning/uiRecordApi';
 
 /*
@@ -21,6 +23,8 @@ import { getRecord } from 'lightning/uiRecordApi';
     #   </c-lightning-record-layout>
     *   ...
     * </template>
+    * 
+    * @author https://github.com/sandriiy/Deserves-Acceptance
 */
 export default class LightningRecordLayout extends LightningElement {
     @api recordId;

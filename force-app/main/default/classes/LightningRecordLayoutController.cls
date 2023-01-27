@@ -1,4 +1,8 @@
+/**
+* @author https://github.com/sandriiy/Deserves-Acceptance
+*/
 public with sharing class LightningRecordLayoutController {
+    // Data Transfer Object representing fields on the page layout
     private class RecordLayoutFieldDto {
         @AuraEnabled
         public String apiFieldName;
@@ -10,6 +14,7 @@ public with sharing class LightningRecordLayoutController {
         public Boolean isTwoColumnSection;
     }
 
+    // Data Transfer Object representing fields on the header/compact layout
     private class RecordHeaderFieldDto {
         @AuraEnabled
         public Boolean isDefaultField; 
@@ -28,17 +33,19 @@ public with sharing class LightningRecordLayoutController {
         if (isNotEmpty(layouts)) {
             Metadata.Layout desiredLayout = (Metadata.Layout) layouts.get(0);
             for (Metadata.LayoutSection section : desiredLayout.layoutSections) {
-                String sectionName = section.label;
+                if (isDetailSectionEnabled(section)) {
+                    String sectionName = section.label;
 
-                for (Metadata.LayoutColumn column : section.layoutColumns) {
-                    if (isNotEmpty(column.layoutItems)) {
-                        for (Metadata.LayoutItem item : column.layoutItems) {
-                            RecordLayoutFieldDto field = new RecordLayoutFieldDto();
-                            field.apiFieldName = item.field;
-                            field.parentSectionName = sectionName;
-                            field.isOneColumnSection = isOneColumnLayoutSection(section);
-                            field.isTwoColumnSection = isTwoColumnLayoutSection(section);
-                            fields.add(field);
+                    for (Metadata.LayoutColumn column : section.layoutColumns) {
+                        if (isNotEmpty(column.layoutItems)) {
+                            for (Metadata.LayoutItem item : column.layoutItems) {
+                                RecordLayoutFieldDto field = new RecordLayoutFieldDto();
+                                field.apiFieldName = item.field;
+                                field.parentSectionName = sectionName;
+                                field.isOneColumnSection = isOneColumnLayoutSection(section);
+                                field.isTwoColumnSection = isTwoColumnLayoutSection(section);
+                                fields.add(field);
+                            }
                         }
                     }
                 }
@@ -74,17 +81,25 @@ public with sharing class LightningRecordLayoutController {
         return fields;
     }
 
+    @TestVisible
     private static Boolean isNotEmpty(List<Object> entities) {
         return (entities != null && !entities.isEmpty());
     }
 
+    @TestVisible
     private static Boolean isOneColumnLayoutSection(Metadata.LayoutSection section) {
         String sectionPositionStyle = section != null ? String.valueOf(section.style).toLowerCase() : '';
         return (!String.isBlank(sectionPositionStyle) && sectionPositionStyle.contains('onecolumn'));
     }
 
+    @TestVisible
     private static Boolean isTwoColumnLayoutSection(Metadata.LayoutSection section) {
         String sectionPositionStyle = section != null ? String.valueOf(section.style).toLowerCase() : '';
         return (!String.isBlank(sectionPositionStyle) && sectionPositionStyle.contains('twocolumn'));
+    }
+
+    @TestVisible
+    private static Boolean isDetailSectionEnabled(Metadata.LayoutSection section) {
+        return (section != null && section.detailHeading == true);
     }
 }
