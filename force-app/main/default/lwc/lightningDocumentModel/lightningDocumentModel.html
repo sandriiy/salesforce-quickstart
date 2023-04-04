@@ -1,0 +1,29 @@
+<template>
+    <div class="slds-card" lwc:ref="parentCard" data-ref="parendCard">
+        <div class="slds-m-vertical_small">
+            <h1 class="slds-align_absolute-center">New Document Object Model (DOM)</h1>
+            <div class="slds-align_absolute-center slds-grid slds-grid_vertical">
+                <p class="slds-col">Template Refs API + Improved conditional directives</p>
+
+                <lightning-button-group class="slds-col slds-m-top_small">
+                    <lightning-button label="Set True" onclick={setTrueValue}></lightning-button>
+                    <lightning-button label="Set False" onclick={setFalseValue}></lightning-button>
+                    <lightning-button label="Set Undefined" onclick={setUndefinedValue}></lightning-button>
+                </lightning-button-group>
+
+                <!-- if:true && if:false -->
+                <div class="slds-col slds-m-top_small">
+                    <template lwc:if={expression1}>
+                        values is true
+                    </template>
+                    <template lwc:elseif={expression2}>
+                        values is false
+                    </template>
+                    <template lwc:else>
+                        value isn't true and false
+                    </template>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

@@ -1,0 +1,10 @@
+<template>
+    <div class="slds-card">
+        <div class="slds-align_absolute-center slds-grid slds-grid_vertical slds-m-vertical_small slds-scrollable_x">
+            <lightning-button-group class="slds-col slds-m-bottom_medium">
+                <lightning-button label="RefreshEvent" onclick={fireRefreshEvent}></lightning-button>
+            </lightning-button-group>
+            <lightning-datatable key-field="Id" data={accounts} columns={columns}></lightning-datatable>
+        </div>
+    </div>
+</template>

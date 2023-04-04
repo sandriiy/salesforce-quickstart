@@ -1,0 +1,6 @@
+<template lwc:render-mode='light'> <!-- lwc:render-mode='light' -->
+    <div class="slds-grid slds-grid_vertical">
+        <lightning-button lwc:ref="native" variant="brand" label="Change Style" title="Change Style" onclick={handleStyles} class="slds-m-bottom_medium slds-align_absolute-center"></lightning-button>
+        <c-lightning-refresh lwc:ref="child"></c-lightning-refresh>
+    </div>
+</template>
