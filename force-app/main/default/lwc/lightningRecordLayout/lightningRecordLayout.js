@@ -19,6 +19,8 @@ import { getRecord } from 'lightning/uiRecordApi';
     #       api-object-name="Account" 
     #       layout-page="Account Layout"
     #       layout-header="FieldSetName"
+    #       max-section-height="600"
+    #       is-section-opened="false"
     #       is-read-only="false">
     #   </c-lightning-record-layout>
     *   ...
@@ -31,6 +33,8 @@ export default class LightningRecordLayout extends LightningElement {
     @api apiObjectName;
     @api layoutPage;
     @api layoutHeader;
+    @api maxSectionHeight;
+    @api isSectionOpened;
     @api isReadOnly;
 
     @track sectionsDetails;
@@ -100,6 +104,22 @@ export default class LightningRecordLayout extends LightningElement {
 
     getCopiedObject(object) {
         return object != undefined ? JSON.parse(JSON.stringify(object)) : undefined;
+    }
+
+    get activeSections() {
+        if (this.isSectionOpened == true) {
+            return (
+                this.isEmptyObject(this.sectionsDetails)
+                ? []
+                : this.sectionsDetails.map(section => section.key)
+            );
+        } else {
+            return [];
+        }
+    }
+
+    get styleSections() {
+        return (`max-height: ${this.maxSectionHeight}px;overflow-y: auto;overflow-x: hidden;width: 100%;`);
     }
 
     setHeaderFieldValues(record) {

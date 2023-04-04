@@ -42,16 +42,18 @@
 
     <!-- The block responsible for generating sections, columns and fields -->
     <div class="slds-card">
-        <lightning-accordion allow-multiple-sections-open class="slds-grid slds-grid_vertical">
+        <lightning-accordion allow-multiple-sections-open active-section-name={activeSections} class="slds-grid slds-grid_vertical">
             <template for:each={sectionsDetails} for:item="sectionDetail">
                 <lightning-accordion-section key={sectionDetail.key} name={sectionDetail.key} label={sectionDetail.key} class="slds-col">
-                    <lightning-record-form 
-                        record-id={recordId}
-                        object-api-name={apiObjectName}
-                        fields={sectionDetail.fields}
-                        columns={sectionDetail.columns}
-                        mode={sectionDetail.mode}>
-                    </lightning-record-form> 
+                    <div style={styleSections}>
+                        <lightning-record-form 
+                            record-id={recordId}
+                            object-api-name={apiObjectName}
+                            fields={sectionDetail.fields}
+                            columns={sectionDetail.columns}
+                            mode={sectionDetail.mode}>
+                        </lightning-record-form> 
+                    </div>
                 </lightning-accordion-section>
             </template>
         </lightning-accordion>

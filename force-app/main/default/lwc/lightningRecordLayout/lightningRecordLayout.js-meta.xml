@@ -12,7 +12,9 @@
             <property name="recordId" label="Specify the record ID" type="String" placeholder="0000hXXXXXXXXXXXXX" required="true"/>
             <property name="apiObjectName" label="Specify the object's API name" type="String" placeholder="Account" required="true"/>
             <property name="layoutPage" label="Specify the name of the page layout" type="String" required="true"/>
-            <property name="layoutHeader" label="Specify a fieldset name (header compact layout)" description="The API name of the fieldset must be specified. The first field in the set will be used as the main field in the header" type="String"/>
+            <property name="layoutHeader" label="Specify a fieldset name (header compact layout)" description="The API name of the fieldset must be specified. The first field in the set will be used as the main field in the header." type="String"/>
+            <property name="maxSectionHeight" label="Specify the maximum height of the sections" description="Everything outside the size will be scrollable." type="Integer" default="400"/>
+            <property name="isSectionOpened" label="Do sections have to be open right away?" type="Boolean" default="false"/>
             <property name="isReadOnly" label="Is there a read-only mode?" type="Boolean" default="false"/>
         </targetConfig>
     </targetConfigs>
